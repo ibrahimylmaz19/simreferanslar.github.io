@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Referanslar</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 95%;
+    max-width: 1100px;
+}
+
+/* HEADER */
+.header {
+    background: #1c5094;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 5px 20px rgba(194, 10, 10, 0.05);
+    text-align: center;
+}
+
+.header-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.header-logos img {
+    height: 60px;
+}
+
+.company-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* TITLE */
+.main-title {
+    text-align: center;
+    margin: 50px 0 30px;
+    font-size: 28px;
+}
+
+/* SECTION */
+.section {
+    background: #fff;
+    padding: 150px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    border-style: solid;
+   
+    
+}
+
+/* SLIDER */
+.slider {
+    position: relative;
+    height: 200px;
+}
+
+/* SLIDE */
+.slide {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.8s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide.exit {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* LOGO WRAPPER */
+.logo-box {
+    position: relative;
+    display: inline-block;
+}
+
+/* LOGO */
+.logo-box img {
+    max-width: 260px;
+    transition: 0.3s;
+}
+
+.logo-name {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    opacity: 0.6; /* HER ZAMAN GÖRÜNÜR */
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+/* AKTİF LOGODA DAHA NET */
+.slide.active .logo-name {
+    opacity: 1;
+    bottom: -30px;
+}
+
+.logo-box:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-box img {
+        max-width: 180px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-logos">
+            <img src="img/akinsoft.png">
+            <img src="img/qq.png">
+        </div>
+        <div class="company-text">
+            SİM Bilişim Teknolojileri – Akınsoft Mersin Bölge Bayi
+        </div>
+    </div>
+
+    <div class="main-title">Referanslarımız</div>
+
+    <!-- KURUYEMİŞ -->
+    <div class="section">
+       
+        <div class="slider">
+
+            <div class="slide active">
+                <div class="logo-box">
+                    <img src="img/images.png">
+                    <div class="logo-name">ÖZCANLAR KURUYEMİŞ</div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="logo-box">
+                    <img src="img/imagess.png">
+                    <div class="logo-name">DEMİRCANLAR GURME</div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="logo-box">
+                    <img src="img/1 (4).jpg">
+                    <div class="logo-name">BORSA TANTUNİ</div>
+                </div>
+            </div>
+
+        </div>
+           <div class="slide">
+                <div class="logo-box">
+                    <img src="img/caption.jpg">
+                    <div class="logo-name">KEYF-İ DEMS</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sliders = document.querySelectorAll(".slider");
+
+    sliders.forEach(slider => {
+        const slides = slider.querySelectorAll(".slide");
+        let index = 0;
+
+        setInterval(() => {
+
+            slides[index].classList.remove("active");
+            slides[index].classList.add("exit");
+
+            index = (index + 1) % slides.length;
+
+            slides[index].classList.add("active");
+
+            setTimeout(() => {
+                slides.forEach(s => s.classList.remove("exit"));
+            }, 800);
+
+        }, 2500);
+    });
+
+});
+</script>
+
+</body>
+</html>
